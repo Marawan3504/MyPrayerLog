@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>سجل صلواتي</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: url('./mosque-bg.jpg') no-repeat center bottom fixed;
+      background-size: cover;
+      font-family: 'Tajawal', sans-serif;
+    }
+    h1::before, h1::after {
+      content: "﷽";
+      margin: 0 10px;
+      color: #15803d;
+      font-size: 1.2rem;
+    }
+    #prayers tr:hover {
+      background-color: rgba(209,250,229,0.8);
+      transition: background-color 0.3s ease;
+    }
+    .content-box {
+      background-color: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(4px);
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="text-gray-800 flex flex-col items-center min-h-screen p-6">
+  <h1 class="text-3xl font-bold mb-6 text-green-800">سجل صلواتي</h1>
+  <div class="w-full max-w-3xl shadow-xl rounded-2xl overflow-hidden border-4 border-green-600 content-box">
+    <table class="min-w-full border-collapse text-center">
+      <thead class="bg-green-700 text-white">
+        <tr>
+          <th class="p-3">التاريخ</th>
+          <th class="p-3">الفجر</th>
+          <th class="p-3">الظهر</th>
+          <th class="p-3">العصر</th>
+          <th class="p-3">المغرب</th>
+          <th class="p-3">العشاء</th>
+        </tr>
+      </thead>
+      <tbody id="prayers" class="divide-y divide-gray-200 bg-green-50">
+      </tbody>
+    </table>
+  </div>
+  <p class="mt-6 text-green-900 font-semibold">اللهم اجعلنا من المحافظين على الصلاة</p>
+
+  <script>
+    const url = 'https://sheetdb.io/api/v1/3zj6v0tvrcv3r';
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        const tbody = document.getElementById('prayers');
+        data.forEach(row => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td class="p-3">${row["التاريخ"] || '-'}</td>
+            <td class="p-3">${row["الفجر"] || '-'}</td>
+            <td class="p-3">${row["الظهر"] || '-'}</td>
+            <td class="p-3">${row["العصر"] || '-'}</td>
+            <td class="p-3">${row["المغرب"] || '-'}</td>
+            <td class="p-3">${row["العشاء"] || '-'}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+      })
+      .catch(err => {
+        console.error(err);
+        document.getElementById('prayers').innerHTML =
+          `<tr><td colspan="6" class="p-4 text-red-600">حصل خطأ أثناء تحميل البيانات</td></tr>`;
+      });
+  </script>
+</body>
+</html>
