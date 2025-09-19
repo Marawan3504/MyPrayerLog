@@ -4,10 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>سجل صلواتي</title>
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
-<style>
+  <style>
     body {
-      background: linear-gradient(to bottom, #e6f4ea, #dff0f5);
+      /* ضع اسم ملف الصورة اللي على جهازك مكان background.jpg */
+      background: url('mosque-bg.jpg') no-repeat center center fixed;
+      background-size: cover;
       font-family: 'Tajawal', sans-serif;
     }
     h1::before, h1::after {
@@ -25,12 +28,16 @@
       backdrop-filter: blur(4px);
     }
   </style>
+  <!-- Google Font Tajawal -->
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body class="text-gray-800 flex flex-col items-center min-h-screen p-6">
-  <h1 class="text-3xl font-bold mb-6 text-green-800">سجل صلواتي</h1>
-  <div class="w-full max-w-3xl shadow-xl rounded-2xl overflow-hidden border-4 border-green-600 content-box">
-    <table class="min-w-full border-collapse text-center">
+<body class="text-gray-800 flex flex-col items-center min-h-screen p-4">
+
+  <h1 class="text-2xl md:text-3xl font-bold mb-4 text-green-800">سجل صلواتي</h1>
+
+  <!-- حاوية الجدول -->
+  <div class="w-full max-w-3xl shadow-xl rounded-2xl border-4 border-green-600 content-box overflow-x-auto">
+    <table class="min-w-full border-collapse text-center text-sm md:text-base">
       <thead class="bg-green-700 text-white">
         <tr>
           <th class="p-3">التاريخ</th>
@@ -42,10 +49,14 @@
         </tr>
       </thead>
       <tbody id="prayers" class="divide-y divide-gray-200 bg-green-50">
+        <!-- البيانات هتتضاف هنا -->
       </tbody>
     </table>
   </div>
-  <p class="mt-6 text-green-900 font-semibold">اللهم اجعلنا من المحافظين على الصلاة</p>
+
+  <p class="mt-4 text-green-900 font-semibold text-sm md:text-base">
+    اللهم اجعلنا من المحافظين على الصلاة
+  </p>
 
   <script>
     const url = 'https://sheetdb.io/api/v1/3zj6v0tvrcv3r';
@@ -72,6 +83,8 @@
           `<tr><td colspan="6" class="p-4 text-red-600">حصل خطأ أثناء تحميل البيانات</td></tr>`;
       });
   </script>
+
 </body>
 </html>
+
 
