@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>سجل صلواتي</title>
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
@@ -45,7 +46,7 @@
       z-index: 1000;
     }
     .circle-link:hover {
-      background-color: #ff8fb3;
+      background-color: #f472b6;
       transform: scale(1.1);
     }
   </style>
@@ -59,7 +60,7 @@
     <table class="min-w-full border-collapse text-center text-sm md:text-base">
       <thead class="bg-green-700 text-white">
         <tr>
-          <th class="p-3">التاريخ</th>
+          <th class="p-3">التاريخ / النشاط</th>
           <th class="p-3">الفجر</th>
           <th class="p-3">الظهر</th>
           <th class="p-3">العصر</th>
@@ -68,6 +69,18 @@
         </tr>
       </thead>
       <tbody id="prayers" class="divide-y divide-gray-200 bg-green-50">
+        <tr class="bg-pink-100 font-semibold">
+          <td class="p-3">أذكار الصباح</td>
+          <td class="p-3" colspan="5">—</td>
+        </tr>
+        <tr class="bg-pink-100 font-semibold">
+          <td class="p-3">الورد (قرآن)</td>
+          <td class="p-3" colspan="5">—</td>
+        </tr>
+        <tr class="bg-pink-100 font-semibold">
+          <td class="p-3">أذكار المساء</td>
+          <td class="p-3" colspan="5">—</td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -99,10 +112,11 @@
       })
       .catch(err => {
         console.error(err);
-        document.getElementById('prayers').innerHTML =
+        document.getElementById('prayers').innerHTML +=
           `<tr><td colspan="6" class="p-4 text-red-600">حصل خطأ أثناء تحميل البيانات</td></tr>`;
       });
   </script>
 
 </body>
 </html>
+
