@@ -89,7 +89,22 @@
   <div class="reset">
     <button id="open">Open</button>
     <button id="reset">Reset</button>
-@@ -110,3 +110,4 @@
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      const envelope = $('#envelope');
+      $('#open').click(open);
+      $('#reset').click(close);
+      envelope.click(open);
+      function open(){
+        envelope.addClass('open').removeClass('close');
+      }
+      function close(){
+        envelope.addClass('close').removeClass('open');
+      }
+    });
   </script>
 </body>
 </html>
