@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>سجل صلواتي</title>
-  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
@@ -56,31 +55,23 @@
 
   <h1 class="text-2xl md:text-3xl font-bold mb-4 text-green-800">سجل صلواتي</h1>
 
-  <div class="w-full max-w-3xl shadow-xl rounded-2xl border-4 border-green-600 content-box overflow-x-auto">
+  <div class="w-full max-w-6xl shadow-xl rounded-2xl border-4 border-green-600 content-box overflow-x-auto">
     <table class="min-w-full border-collapse text-center text-sm md:text-base">
       <thead class="bg-green-700 text-white">
         <tr>
-          <th class="p-3">التاريخ / النشاط</th>
+          <th class="p-3">التاريخ</th>
           <th class="p-3">الفجر</th>
+          <th class="p-3">أذكار الصباح</th>
+          <th class="p-3">الورد (قرآن)</th>
           <th class="p-3">الظهر</th>
           <th class="p-3">العصر</th>
+          <th class="p-3">أذكار المساء</th>
           <th class="p-3">المغرب</th>
           <th class="p-3">العشاء</th>
         </tr>
       </thead>
       <tbody id="prayers" class="divide-y divide-gray-200 bg-green-50">
-        <tr class="bg-pink-100 font-semibold">
-          <td class="p-3">أذكار الصباح</td>
-          <td class="p-3" colspan="5">—</td>
-        </tr>
-        <tr class="bg-pink-100 font-semibold">
-          <td class="p-3">الورد (قرآن)</td>
-          <td class="p-3" colspan="5">—</td>
-        </tr>
-        <tr class="bg-pink-100 font-semibold">
-          <td class="p-3">أذكار المساء</td>
-          <td class="p-3" colspan="5">—</td>
-        </tr>
+        <!-- سيتم تحميل البيانات هنا -->
       </tbody>
     </table>
   </div>
@@ -93,17 +84,21 @@
 
   <script>
     const url = 'https://sheetdb.io/api/v1/3zj6v0tvrcv3r';
+    const tbody = document.getElementById('prayers');
+
     fetch(url)
       .then(res => res.json())
       .then(data => {
-        const tbody = document.getElementById('prayers');
         data.forEach(row => {
           const tr = document.createElement('tr');
           tr.innerHTML = `
             <td class="p-3">${row["التاريخ"] || '-'}</td>
             <td class="p-3">${row["الفجر"] || '-'}</td>
+            <td class="p-3">${row["أذكار الصباح"] || '-'}</td>
+            <td class="p-3">${row["الورد"] || '-'}</td>
             <td class="p-3">${row["الظهر"] || '-'}</td>
             <td class="p-3">${row["العصر"] || '-'}</td>
+            <td class="p-3">${row["أذكار المساء"] || '-'}</td>
             <td class="p-3">${row["المغرب"] || '-'}</td>
             <td class="p-3">${row["العشاء"] || '-'}</td>
           `;
@@ -112,11 +107,10 @@
       })
       .catch(err => {
         console.error(err);
-        document.getElementById('prayers').innerHTML +=
-          `<tr><td colspan="6" class="p-4 text-red-600">حصل خطأ أثناء تحميل البيانات</td></tr>`;
+        tbody.innerHTML +=
+          `<tr><td colspan="9" class="p-4 text-red-600">حصل خطأ أثناء تحميل البيانات</td></tr>`;
       });
   </script>
 
 </body>
 </html>
-
