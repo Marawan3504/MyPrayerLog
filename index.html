@@ -2,112 +2,89 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>بنحاول نصالح فرووح😔</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>سجل صلواتي</title>
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    body { background-color:#ffe6f0; }
-    .envlope-wrapper { height:380px; }
-    #envelope {
-      position:relative; width:280px; height:180px;
-      border-bottom-left-radius:6px; border-bottom-right-radius:6px;
-      margin:auto; top:150px; background-color:#cc4c7c;
-      box-shadow:0 4px 20px rgba(0,0,0,.2);
+    body {
+      /* ضع اسم ملف الصورة اللي على جهازك مكان background.jpg */
+      background: url('mosque-bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Tajawal', sans-serif;
     }
-    .front{position:absolute;width:0;height:0;z-index:3;}
-    .flap{
-      border-left:140px solid transparent;border-right:140px solid transparent;
-      border-bottom:82px solid transparent;border-top:98px solid #cc4c7c;
-      transform-origin:top;pointer-events:none;
+    h1::before, h1::after {
+      content: "﷽";
+      margin: 0 10px;
+      color: #15803d;
+      font-size: 1.2rem;
     }
-    .pocket{
-      border-left:140px solid #ff80b3;border-right:140px solid #ff80b3;
-      border-bottom:90px solid #e06699;border-top:90px solid transparent;
-      border-bottom-left-radius:6px;border-bottom-right-radius:6px;
+    #prayers tr:hover {
+      background-color: rgba(209,250,229,0.8);
+      transition: background-color 0.3s ease;
     }
-    .letter{
-      position:relative;background:#fff;width:90%;margin:auto;height:90%;
-      top:5%;border-radius:6px;box-shadow:0 2px 26px rgba(0,0,0,.12);
+    .content-box {
+      background-color: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(4px);
     }
-    .letter:after{
-      content:'';position:absolute;inset:0;
-    }
-    .words{position:absolute;left:10%;width:80%;height:14%;background:#ffffff;}
-    .words.line1{top:15%;width:80%;height:7%;}
-    .words.line2{top:30%;}
-    .words.line3{top:40%;}
-   
-    .open .flap{transform:rotateX(180deg);transition:.4s ease;z-index:1;}
-    .close .flap{transform:rotateX(0deg);transition:.4s .6s ease;z-index:5;}
-    .close .letter{transform:translateY(0);transition:.4s ease;z-index:1;}
-    .open .letter{transform:translateY(-130px);transition:.4s .6s ease;z-index:2;}
-    .hearts,.flowers{position:absolute;top:90px;left:0;right:0;z-index:2;}
-    .heart,.flower{position:absolute;bottom:0;pointer-events:none;font-size:40px;}
-    .close .heart,.close .flower{opacity:0;animation:none;}
-    .a1{left:20%;animation:slideUp 4s linear 1,sideSway 2s ease-in-out 4 alternate;animation-fill-mode:forwards;animation-delay:.7s;}
-    .a2{left:55%;animation:slideUp 5s linear 1,sideSway 4s ease-in-out 2 alternate;animation-fill-mode:forwards;animation-delay:.7s;}
-    .a3{left:10%;animation:slideUp 7s linear 1,sideSway 2s ease-in-out 6 alternate;animation-fill-mode:forwards;animation-delay:.7s;}
-    .f1{left:35%;animation:slideUp 6s linear 1,sideSway 3s ease-in-out 4 alternate;animation-fill-mode:forwards;animation-delay:.7s;}
-    .f2{left:70%;animation:slideUp 5s linear 1,sideSway 3s ease-in-out 3 alternate;animation-fill-mode:forwards;animation-delay:.7s;}
-    .f3{left:15%;animation:slideUp 8s linear 1,sideSway 2.5s ease-in-out 5 alternate;animation-fill-mode:forwards;animation-delay:.7s;}
-    .s1{left:0%;animation:slideUp 6s linear 1,sideSway 3s ease-in-out 4 alternate;animation-fill-mode:forwards;animation-delay:.7s;}
-    .s2{left:40%;animation:slideUp 5s linear 1,sideSway 3s ease-in-out 3 alternate;animation-fill-mode:forwards;animation-delay:.7s;}
-    .s3{left:60%;animation:slideUp 8s linear 1,sideSway 2.5s ease-in-out 5 alternate;animation-fill-mode:forwards;animation-delay:.7s;}
-    @keyframes slideUp{0%{top:0;}100%{top:-600px;}}
-    @keyframes sideSway{0%{margin-left:0;}100%{margin-left:50px;}}
-    .reset{text-align:center;}
-    .reset button{
-      font-weight:800;background:transparent;border:2px solid #ff80b3;color:#ff80b3;
-      border-radius:4px;font-size:14px;text-transform:uppercase;margin:5px;padding:10px;min-width:120px;cursor:pointer;
-    }
-    .reset button:hover{background:#ff80b3;color:#fff;}
   </style>
+  <!-- Google Font Tajawal -->
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body>
-  <div class="envlope-wrapper">
-    <div id="envelope" class="close">
-      <div class="front flap"></div>
-      <div class="front pocket"></div>
-      <div class="letter">
-        <div class="words line1">فروح😔</div>
-        <div class="words line2">حقك عليا انا اسف متزعليش مني كل</div>
-        <div class="words line3">اللي زعلني منك انك بتقولي خلاص و هنقطع و انتي عارفه غلاوتك عندي و متخليش حاجه تافهة زي دي تخسرنا بعض و انا عمري ما هكذب عليكي يا فروووووووح</div>
-        <div class="words line4"></div>
-      </div>
-      <div class="hearts">
-        <div class="heart a1">💕</div>
-        <div class="heart a2">💕</div>
-        <div class="heart a3">💕</div>
-      </div>
-      <div class="flowers">
-        <div class="flower f1">🌸</div>
-        <div class="flower f2">🌸</div>
-        <div class="flower f3">🌸</div>
-        <div class="flower s1">🌷</div>
-        <div class="flower s2">🌷</div>
-        <div class="flower s3">🌷</div>
-      </div>
-    </div>
-  </div>
-  <div class="reset">
-    <button id="open">Open</button>
-    <button id="reset">Reset</button>
+<body class="text-gray-800 flex flex-col items-center min-h-screen p-4">
+
+  <h1 class="text-2xl md:text-3xl font-bold mb-4 text-green-800">سجل صلواتي</h1>
+
+  <!-- حاوية الجدول -->
+  <div class="w-full max-w-3xl shadow-xl rounded-2xl border-4 border-green-600 content-box overflow-x-auto">
+    <table class="min-w-full border-collapse text-center text-sm md:text-base">
+      <thead class="bg-green-700 text-white">
+        <tr>
+          <th class="p-3">التاريخ</th>
+          <th class="p-3">الفجر</th>
+          <th class="p-3">الظهر</th>
+          <th class="p-3">العصر</th>
+          <th class="p-3">المغرب</th>
+          <th class="p-3">العشاء</th>
+        </tr>
+      </thead>
+      <tbody id="prayers" class="divide-y divide-gray-200 bg-green-50">
+        <!-- البيانات هتتضاف هنا -->
+      </tbody>
+    </table>
   </div>
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <p class="mt-4 text-green-900 font-semibold text-sm md:text-base">
+    اللهم اجعلنا من المحافظين على الصلاة
+  </p>
+
   <script>
-    $(document).ready(function(){
-      const envelope = $('#envelope');
-      $('#open').click(open);
-      $('#reset').click(close);
-      envelope.click(open);
-      function open(){
-        envelope.addClass('open').removeClass('close');
-      }
-      function close(){
-        envelope.addClass('close').removeClass('open');
-      }
-    });
+    const url = 'https://sheetdb.io/api/v1/3zj6v0tvrcv3r';
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        const tbody = document.getElementById('prayers');
+        data.forEach(row => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td class="p-3">${row["التاريخ"] || '-'}</td>
+            <td class="p-3">${row["الفجر"] || '-'}</td>
+            <td class="p-3">${row["الظهر"] || '-'}</td>
+            <td class="p-3">${row["العصر"] || '-'}</td>
+            <td class="p-3">${row["المغرب"] || '-'}</td>
+            <td class="p-3">${row["العشاء"] || '-'}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+      })
+      .catch(err => {
+        console.error(err);
+        document.getElementById('prayers').innerHTML =
+          `<tr><td colspan="6" class="p-4 text-red-600">حصل خطأ أثناء تحميل البيانات</td></tr>`;
+      });
   </script>
+
 </body>
 </html>
+
 
