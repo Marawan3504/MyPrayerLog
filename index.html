@@ -8,7 +8,6 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
-      /* ضع اسم ملف الصورة اللي على جهازك مكان background.jpg */
       background: url('mosque-bg.jpg') no-repeat center center fixed;
       background-size: cover;
       font-family: 'Tajawal', sans-serif;
@@ -27,15 +26,37 @@
       background-color: rgba(255, 255, 255, 0.85);
       backdrop-filter: blur(4px);
     }
+    /* ستايل الدائرة */
+    .circle-link {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      width: 60px;
+      height: 60px;
+      background-color: #15803d;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      text-decoration: none;
+      z-index: 1000;
+    }
+    .circle-link:hover {
+      background-color: #16a34a;
+      transform: scale(1.1);
+    }
   </style>
-  <!-- Google Font Tajawal -->
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body class="text-gray-800 flex flex-col items-center min-h-screen p-4">
 
   <h1 class="text-2xl md:text-3xl font-bold mb-4 text-green-800">سجل صلواتي</h1>
 
-  <!-- حاوية الجدول -->
   <div class="w-full max-w-3xl shadow-xl rounded-2xl border-4 border-green-600 content-box overflow-x-auto">
     <table class="min-w-full border-collapse text-center text-sm md:text-base">
       <thead class="bg-green-700 text-white">
@@ -57,6 +78,9 @@
   <p class="mt-4 text-green-900 font-semibold text-sm md:text-base">
     اللهم اجعلنا من المحافظين على الصلاة
   </p>
+
+  <!-- الدائرة اللي بتفتح index2.html -->
+  <a href="index2.html" class="circle-link" title="اذهب إلى الصفحة التالية">+</a>
 
   <script>
     const url = 'https://sheetdb.io/api/v1/3zj6v0tvrcv3r';
@@ -86,5 +110,3 @@
 
 </body>
 </html>
-
-
