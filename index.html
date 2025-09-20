@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>سجل صلواتي</title>
-  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
@@ -26,14 +25,13 @@
       background-color: rgba(255, 255, 255, 0.85);
       backdrop-filter: blur(4px);
     }
-    /* ستايل الدائرة */
     .circle-link {
       position: fixed;
       bottom: 20px;
       left: 20px;
       width: 60px;
       height: 60px;
-      background-color: #15803d;
+      background-color: pink;
       color: white;
       border-radius: 50%;
       display: flex;
@@ -47,7 +45,7 @@
       z-index: 1000;
     }
     .circle-link:hover {
-      background-color: #16a34a;
+      background-color: #ff8fb3;
       transform: scale(1.1);
     }
   </style>
@@ -70,7 +68,6 @@
         </tr>
       </thead>
       <tbody id="prayers" class="divide-y divide-gray-200 bg-green-50">
-        <!-- البيانات هتتضاف هنا -->
       </tbody>
     </table>
   </div>
@@ -79,8 +76,7 @@
     اللهم اجعلنا من المحافظين على الصلاة
   </p>
 
-  <!-- الدائرة اللي بتفتح index2.html -->
-  <a href="index2.html" class="circle-link" title="اذهب إلى الصفحة التالية">+</a>
+  <a href="index2.html" class="circle-link" title="اذهب إلى الصفحة التالية">🙈</a>
 
   <script>
     const url = 'https://sheetdb.io/api/v1/3zj6v0tvrcv3r';
