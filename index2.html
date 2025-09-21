@@ -1,80 +1,76 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>بنحاول نصالح فرووح😔</title>
   <style>
-    body { background-color:#ffe6f0; margin:0; padding:0; }
-    .envlope-wrapper { height:auto; padding-top:100px; }
+    body {background:#ffe6f0;margin:0;padding:0;}
+    .envlope-wrapper{padding-top:100px;text-align:center;}
 
-    #envelope {
+    #envelope{
       position:relative;
       width:90%;
-      max-width:320px;
-      aspect-ratio:280/180; /* يحافظ على النسبة */
+      max-width:300px;
+      margin:auto;
+      background:#cc4c7c;
       border-bottom-left-radius:6px;
       border-bottom-right-radius:6px;
-      margin:auto;
-      background-color:#cc4c7c;
       box-shadow:0 4px 20px rgba(0,0,0,.2);
     }
 
-    .front{position:absolute;width:0;height:0;z-index:3;}
-    .flap{
-      border-left:50% solid transparent;border-right:50% solid transparent;
-      border-bottom:82px solid transparent;border-top:98px solid #cc4c7c;
-      transform-origin:top;pointer-events:none;
-    }
+    /* الجيب الخلفي */
     .pocket{
-      border-left:50% solid #ff80b3;border-right:50% solid #ff80b3;
-      border-bottom:90px solid #e06699;border-top:90px solid transparent;
-      border-bottom-left-radius:6px;border-bottom-right-radius:6px;
+      width:0;height:0;
+      border-left:50% solid #ff80b3;
+      border-right:50% solid #ff80b3;
+      border-bottom:60px solid #e06699;
+      border-top:60px solid transparent;
+      border-bottom-left-radius:6px;
+      border-bottom-right-radius:6px;
+    }
+
+    /* الغطاء الأمامي */
+    .flap{
+      position:absolute;
+      top:0;left:0;right:0;
+      width:0;height:0;
+      margin:auto;
+      border-left:50% solid transparent;
+      border-right:50% solid transparent;
+      border-top:80px solid #cc4c7c;
+      transform-origin:top;
+      pointer-events:none;
+      z-index:5;
     }
 
     .letter{
-      position:relative;
       background:#fff;
-      width:95%;
+      width:85%;
       margin:auto;
-      height:95%;
-      top:2%;
+      margin-top:-40px;
       border-radius:6px;
+      padding:12px;
       box-shadow:0 2px 26px rgba(0,0,0,.12);
       overflow-wrap:break-word;
       word-wrap:break-word;
       white-space:normal;
-      padding:12px;
-      box-sizing:border-box;
       font-size:16px;
       line-height:1.4;
+      position:relative;
+      z-index:2;
     }
 
-    .words{
-      display:block;
-      width:100%;
-      margin-bottom:8px;
-      white-space:normal;
-    }
+    .words{display:block;margin-bottom:8px;}
 
-    .open .flap{transform:rotateX(180deg);transition:.4s ease;z-index:1;}
-    .close .flap{transform:rotateX(0deg);transition:.4s .6s ease;z-index:5;}
-    .close .letter{transform:translateY(0);transition:.4s ease;z-index:1;}
-    .open .letter{transform:translateY(-130px);transition:.4s .6s ease;z-index:2;}
+    .open .flap{transform:rotateX(180deg);transition:.4s ease;}
+    .close .flap{transform:rotateX(0deg);transition:.4s .6s ease;}
+    .open .letter{transform:translateY(-120px);transition:.4s .6s ease;}
+    .close .letter{transform:translateY(0);transition:.4s ease;}
 
-    .hearts,.flowers{position:absolute;top:90px;left:0;right:0;z-index:2;}
-    .heart,.flower{position:absolute;bottom:0;pointer-events:none;font-size:40px;}
+    .hearts,.flowers{position:absolute;top:50%;left:0;right:0;z-index:1;}
+    .heart,.flower{position:absolute;bottom:0;pointer-events:none;font-size:30px;}
     .close .heart,.close .flower{opacity:0;animation:none;}
-
-    .a1{left:20%;animation:slideUp 4s linear 1,sideSway 2s ease-in-out 4 alternate;animation-fill-mode:forwards;animation-delay:.7s;}
-    .a2{left:55%;animation:slideUp 5s linear 1,sideSway 4s ease-in-out 2 alternate;animation-fill-mode:forwards;animation-delay:.7s;}
-    .a3{left:10%;animation:slideUp 7s linear 1,sideSway 2s ease-in-out 6 alternate;animation-fill-mode:forwards;animation-delay:.7s;}
-    .f1{left:35%;animation:slideUp 6s linear 1,sideSway 3s ease-in-out 4 alternate;animation-fill-mode:forwards;animation-delay:.7s;}
-    .f2{left:70%;animation:slideUp 5s linear 1,sideSway 3s ease-in-out 3 alternate;animation-fill-mode:forwards;animation-delay:.7s;}
-    .f3{left:15%;animation:slideUp 8s linear 1,sideSway 2.5s ease-in-out 5 alternate;animation-fill-mode:forwards;animation-delay:.7s;}
-    .s1{left:0%;animation:slideUp 6s linear 1,sideSway 3s ease-in-out 4 alternate;animation-fill-mode:forwards;animation-delay:.7s;}
-    .s2{left:40%;animation:slideUp 5s linear 1,sideSway 3s ease-in-out 3 alternate;animation-fill-mode:forwards;animation-delay:.7s;}
-    .s3{left:60%;animation:slideUp 8s linear 1,sideSway 2.5s ease-in-out 5 alternate;animation-fill-mode:forwards;animation-delay:.7s;}
 
     @keyframes slideUp{0%{top:0;}100%{top:-600px;}}
     @keyframes sideSway{0%{margin-left:0;}100%{margin-left:50px;}}
@@ -94,8 +90,8 @@
 <body>
   <div class="envlope-wrapper">
     <div id="envelope" class="close">
-      <div class="front flap"></div>
-      <div class="front pocket"></div>
+      <div class="pocket"></div>
+      <div class="flap"></div>
       <div class="letter">
         <div class="words">فروح😔</div>
         <div class="words">حقك عليا انا اسف متزعليش مني كل</div>
@@ -104,17 +100,8 @@
         </div>
       </div>
       <div class="hearts">
-        <div class="heart a1">💕</div>
-        <div class="heart a2">💕</div>
-        <div class="heart a3">💕</div>
-      </div>
-      <div class="flowers">
-        <div class="flower f1">🌸</div>
-        <div class="flower f2">🌸</div>
-        <div class="flower f3">🌸</div>
-        <div class="flower s1">🌷</div>
-        <div class="flower s2">🌷</div>
-        <div class="flower s3">🌷</div>
+        <div class="heart" style="left:20%;">💕</div>
+        <div class="heart" style="left:60%;">💕</div>
       </div>
     </div>
   </div>
@@ -125,17 +112,11 @@
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
-    $(document).ready(function(){
+    $(function(){
       const envelope = $('#envelope');
-      $('#open').click(open);
-      $('#reset').click(close);
-      envelope.click(open);
-      function open(){
-        envelope.addClass('open').removeClass('close');
-      }
-      function close(){
-        envelope.addClass('close').removeClass('open');
-      }
+      $('#open').click(()=>{envelope.addClass('open').removeClass('close');});
+      $('#reset').click(()=>{envelope.addClass('close').removeClass('open');});
+      envelope.click(()=>{envelope.addClass('open').removeClass('close');});
     });
   </script>
 </body>
