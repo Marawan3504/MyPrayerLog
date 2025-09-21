@@ -1,110 +1,252 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>بنحاول نصالح فرووح😔</title>
   <style>
-    body {background:#ffe6f0;margin:0;padding:0;}
-    .envlope-wrapper{padding-top:100px;text-align:center;}
+    body { background-color:#ffe6f0; }
+    .envlope-wrapper { height:380px; }
 
-    #envelope{
+    #envelope {
       position:relative;
-      width:90%;
-      max-width:300px;
-      margin:auto;
-      background:#cc4c7c;
+      width:280px;
+      height:180px;
       border-bottom-left-radius:6px;
       border-bottom-right-radius:6px;
+      margin:auto;
+      top:150px;
+      background-color:#cc4c7c;
       box-shadow:0 4px 20px rgba(0,0,0,.2);
     }
 
-    /* الجيب الخلفي */
-    .pocket{
-      width:0;height:0;
-      border-left:50% solid #ff80b3;
-      border-right:50% solid #ff80b3;
-      border-bottom:60px solid #e06699;
-      border-top:60px solid transparent;
+    .front {
+      position:absolute;
+      width:0;
+      height:0;
+      z-index:3;
+    }
+
+    .flap {
+      border-left:140px solid transparent;
+      border-right:140px solid transparent;
+      border-bottom:82px solid transparent;
+      border-top:98px solid #cc4c7c;
+      transform-origin:top;
+      pointer-events:none;
+    }
+
+    .pocket {
+      border-left:140px solid #ff80b3;
+      border-right:140px solid #ff80b3;
+      border-bottom:90px solid #e06699;
+      border-top:90px solid transparent;
       border-bottom-left-radius:6px;
       border-bottom-right-radius:6px;
     }
 
-    /* الغطاء الأمامي */
-    .flap{
-      position:absolute;
-      top:0;left:0;right:0;
-      width:0;height:0;
+    .letter {
+      position:relative;
+      background:#fff;
+      width:90%;
       margin:auto;
-      border-left:50% solid transparent;
-      border-right:50% solid transparent;
-      border-top:80px solid #cc4c7c;
-      transform-origin:top;
-      pointer-events:none;
+      height:90%;
+      top:5%;
+      border-radius:6px;
+      box-shadow:0 2px 26px rgba(0,0,0,.12);
+    }
+
+    .letter:after {
+      content:'';
+      position:absolute;
+      inset:0;
+    }
+
+    .words {
+      position:absolute;
+      left:10%;
+      width:80%;
+      height:14%;
+      background:#ffffff;
+    }
+
+    .words.line1 {
+      top:15%;
+      width:80%;
+      height:7%;
+    }
+
+    .words.line2 { top:30%; }
+    .words.line3 { top:40%; }
+
+    .open .flap {
+      transform:rotateX(180deg);
+      transition:.4s ease;
+      z-index:1;
+    }
+
+    .close .flap {
+      transform:rotateX(0deg);
+      transition:.4s .6s ease;
       z-index:5;
     }
 
-    .letter{
-      background:#fff;
-      width:85%;
-      margin:auto;
-      margin-top:-40px;
-      border-radius:6px;
-      padding:12px;
-      box-shadow:0 2px 26px rgba(0,0,0,.12);
-      overflow-wrap:break-word;
-      word-wrap:break-word;
-      white-space:normal;
-      font-size:16px;
-      line-height:1.4;
-      position:relative;
+    .close .letter {
+      transform:translateY(0);
+      transition:.4s ease;
+      z-index:1;
+    }
+
+    .open .letter {
+      transform:translateY(-130px);
+      transition:.4s .6s ease;
       z-index:2;
     }
 
-    .words{display:block;margin-bottom:8px;}
-
-    .open .flap{transform:rotateX(180deg);transition:.4s ease;}
-    .close .flap{transform:rotateX(0deg);transition:.4s .6s ease;}
-    .open .letter{transform:translateY(-120px);transition:.4s .6s ease;}
-    .close .letter{transform:translateY(0);transition:.4s ease;}
-
-    .hearts,.flowers{position:absolute;top:50%;left:0;right:0;z-index:1;}
-    .heart,.flower{position:absolute;bottom:0;pointer-events:none;font-size:30px;}
-    .close .heart,.close .flower{opacity:0;animation:none;}
-
-    @keyframes slideUp{0%{top:0;}100%{top:-600px;}}
-    @keyframes sideSway{0%{margin-left:0;}100%{margin-left:50px;}}
-
-    .reset{text-align:center;margin-top:20px;}
-    .reset button{
-      font-weight:800;background:transparent;border:2px solid #ff80b3;color:#ff80b3;
-      border-radius:4px;font-size:14px;text-transform:uppercase;margin:5px;padding:10px;min-width:120px;cursor:pointer;
+    .hearts, .flowers {
+      position:absolute;
+      top:90px;
+      left:0;
+      right:0;
+      z-index:2;
     }
-    .reset button:hover{background:#ff80b3;color:#fff;}
 
-    @media (max-width:400px){
-      .letter{font-size:14px;}
+    .heart, .flower {
+      position:absolute;
+      bottom:0;
+      pointer-events:none;
+      font-size:40px;
+    }
+
+    .close .heart, .close .flower {
+      opacity:0;
+      animation:none;
+    }
+
+    .a1 {
+      left:20%;
+      animation:slideUp 4s linear 1, sideSway 2s ease-in-out 4 alternate;
+      animation-fill-mode:forwards;
+      animation-delay:.7s;
+    }
+
+    .a2 {
+      left:55%;
+      animation:slideUp 5s linear 1, sideSway 4s ease-in-out 2 alternate;
+      animation-fill-mode:forwards;
+      animation-delay:.7s;
+    }
+
+    .a3 {
+      left:10%;
+      animation:slideUp 7s linear 1, sideSway 2s ease-in-out 6 alternate;
+      animation-fill-mode:forwards;
+      animation-delay:.7s;
+    }
+
+    .f1 {
+      left:35%;
+      animation:slideUp 6s linear 1, sideSway 3s ease-in-out 4 alternate;
+      animation-fill-mode:forwards;
+      animation-delay:.7s;
+    }
+
+    .f2 {
+      left:70%;
+      animation:slideUp 5s linear 1, sideSway 3s ease-in-out 3 alternate;
+      animation-fill-mode:forwards;
+      animation-delay:.7s;
+    }
+
+    .f3 {
+      left:15%;
+      animation:slideUp 8s linear 1, sideSway 2.5s ease-in-out 5 alternate;
+      animation-fill-mode:forwards;
+      animation-delay:.7s;
+    }
+
+    .s1 {
+      left:0%;
+      animation:slideUp 6s linear 1, sideSway 3s ease-in-out 4 alternate;
+      animation-fill-mode:forwards;
+      animation-delay:.7s;
+    }
+
+    .s2 {
+      left:40%;
+      animation:slideUp 5s linear 1, sideSway 3s ease-in-out 3 alternate;
+      animation-fill-mode:forwards;
+      animation-delay:.7s;
+    }
+
+    .s3 {
+      left:60%;
+      animation:slideUp 8s linear 1, sideSway 2.5s ease-in-out 5 alternate;
+      animation-fill-mode:forwards;
+      animation-delay:.7s;
+    }
+
+    @keyframes slideUp {
+      0% { top:0; }
+      100% { top:-600px; }
+    }
+
+    @keyframes sideSway {
+      0% { margin-left:0; }
+      100% { margin-left:50px; }
+    }
+
+    .reset { text-align:center; }
+
+    .reset button {
+      font-weight:800;
+      background:transparent;
+      border:2px solid #ff80b3;
+      color:#ff80b3;
+      border-radius:4px;
+      font-size:14px;
+      text-transform:uppercase;
+      margin:5px;
+      padding:10px;
+      min-width:120px;
+      cursor:pointer;
+    }
+
+    .reset button:hover {
+      background:#ff80b3;
+      color:#fff;
     }
   </style>
 </head>
 <body>
   <div class="envlope-wrapper">
     <div id="envelope" class="close">
-      <div class="pocket"></div>
-      <div class="flap"></div>
+      <div class="front flap"></div>
+      <div class="front pocket"></div>
       <div class="letter">
-        <div class="words">فروح😔</div>
-        <div class="words">حقك عليا انا اسف متزعليش مني كل</div>
-        <div class="words">
+        <div class="words line1">فروح😔</div>
+        <div class="words line2">حقك عليا انا اسف متزعليش مني كل</div>
+        <div class="words line3">
           اللي زعلني منك انك بتقولي خلاص و هنقطع و انتي عارفه غلاوتك عندي و متخليش حاجه تافهة زي دي تخسرنا بعض و انا عمري ما هكذب عليكي يا فروووووووح
         </div>
+        <div class="words line4"></div>
       </div>
       <div class="hearts">
-        <div class="heart" style="left:20%;">💕</div>
-        <div class="heart" style="left:60%;">💕</div>
+        <div class="heart a1">💕</div>
+        <div class="heart a2">💕</div>
+        <div class="heart a3">💕</div>
+      </div>
+      <div class="flowers">
+        <div class="flower f1">🌸</div>
+        <div class="flower f2">🌸</div>
+        <div class="flower f3">🌸</div>
+        <div class="flower s1">🌷</div>
+        <div class="flower s2">🌷</div>
+        <div class="flower s3">🌷</div>
       </div>
     </div>
   </div>
+
   <div class="reset">
     <button id="open">Open</button>
     <button id="reset">Reset</button>
@@ -112,11 +254,19 @@
 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
-    $(function(){
+    $(document).ready(function(){
       const envelope = $('#envelope');
-      $('#open').click(()=>{envelope.addClass('open').removeClass('close');});
-      $('#reset').click(()=>{envelope.addClass('close').removeClass('open');});
-      envelope.click(()=>{envelope.addClass('open').removeClass('close');});
+      $('#open').click(open);
+      $('#reset').click(close);
+      envelope.click(open);
+
+      function open(){
+        envelope.addClass('open').removeClass('close');
+      }
+
+      function close(){
+        envelope.addClass('close').removeClass('open');
+      }
     });
   </script>
 </body>
