@@ -64,21 +64,23 @@
 
     .words {
       position:absolute;
-      left:10%;
-      width:80%;
-      height:14%;
+      left:5%;
+      top:5%;
+      width:90%;
+      height:90%;
       background:#ffffff;
+      padding:10px;
+      box-sizing: border-box; /* ده مهم عشان البادينج مايوسعش الـ div */
     }
 
-    .words.line1 {
-      top:15%;
-      width:80%;
-      height:7%;
+    .words p {
+      font-size: 14px;
+      line-height: 1.5;
+      color: #333;
+      margin: 0;
+      overflow-wrap: break-word; /* ده اللي هيحل المشكلة */
     }
-
-    .words.line2 { top:30%; }
-    .words.line3 { top:40%; }
-
+    
     .open .flap {
       transform:rotateX(180deg);
       transition:.4s ease;
@@ -224,12 +226,12 @@
       <div class="front flap"></div>
       <div class="front pocket"></div>
       <div class="letter">
-        <div class="words line1">فروح😔</div>
-        <div class="words line2">حقك عليا انا اسف متزعليش مني كل</div>
-        <div class="words line3">
-          اللي زعلني منك انك بتقولي خلاص و هنقطع و انتي عارفه غلاوتك عندي و متخليش حاجه تافهة زي دي تخسرنا بعض و انا عمري ما هكذب عليكي يا فروووووووح
+        <div class="words">
+          <p>
+            فروح😔<br>
+            حقك عليا انا اسف متزعليش مني. كل اللي زعلني منك انك بتقولي خلاص و هنقطع و انتي عارفه غلاوتك عندي و متخليش حاجه تافهة زي دي تخسرنا بعض و انا عمري ما هكذب عليكي يا فروووووووح
+          </p>
         </div>
-        <div class="words line4"></div>
       </div>
       <div class="hearts">
         <div class="heart a1">💕</div>
