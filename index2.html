@@ -6,23 +6,28 @@
   <title>بنحاول نصالح فرووح😔</title>
   <style>
     body { background-color:#ffe6f0; margin:0; padding:0; }
-    .envlope-wrapper { height:380px; }
+    .envlope-wrapper { height:auto; padding-top:100px; }
 
     #envelope {
-      position:relative; width:280px; height:180px;
-      border-bottom-left-radius:6px; border-bottom-right-radius:6px;
-      margin:auto; top:150px; background-color:#cc4c7c;
+      position:relative;
+      width:90%;
+      max-width:320px;
+      aspect-ratio:280/180; /* يحافظ على النسبة */
+      border-bottom-left-radius:6px;
+      border-bottom-right-radius:6px;
+      margin:auto;
+      background-color:#cc4c7c;
       box-shadow:0 4px 20px rgba(0,0,0,.2);
     }
 
     .front{position:absolute;width:0;height:0;z-index:3;}
     .flap{
-      border-left:140px solid transparent;border-right:140px solid transparent;
+      border-left:50% solid transparent;border-right:50% solid transparent;
       border-bottom:82px solid transparent;border-top:98px solid #cc4c7c;
       transform-origin:top;pointer-events:none;
     }
     .pocket{
-      border-left:140px solid #ff80b3;border-right:140px solid #ff80b3;
+      border-left:50% solid #ff80b3;border-right:50% solid #ff80b3;
       border-bottom:90px solid #e06699;border-top:90px solid transparent;
       border-bottom-left-radius:6px;border-bottom-right-radius:6px;
     }
@@ -30,24 +35,26 @@
     .letter{
       position:relative;
       background:#fff;
-      width:90%;
+      width:95%;
       margin:auto;
-      height:90%;
-      top:5%;
+      height:95%;
+      top:2%;
       border-radius:6px;
       box-shadow:0 2px 26px rgba(0,0,0,.12);
-      overflow-wrap: break-word;
-      word-wrap: break-word;
-      padding:10px;
+      overflow-wrap:break-word;
+      word-wrap:break-word;
+      white-space:normal;
+      padding:12px;
       box-sizing:border-box;
+      font-size:16px;
+      line-height:1.4;
     }
 
     .words{
-      position:relative;
       display:block;
       width:100%;
-      white-space:normal;
       margin-bottom:8px;
+      white-space:normal;
     }
 
     .open .flap{transform:rotateX(180deg);transition:.4s ease;z-index:1;}
@@ -78,6 +85,10 @@
       border-radius:4px;font-size:14px;text-transform:uppercase;margin:5px;padding:10px;min-width:120px;cursor:pointer;
     }
     .reset button:hover{background:#ff80b3;color:#fff;}
+
+    @media (max-width:400px){
+      .letter{font-size:14px;}
+    }
   </style>
 </head>
 <body>
